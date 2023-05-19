@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'order',
+    'order.apps.OrderConfig',
     'bootstrap5',
-]
+    'social_django',
+]   
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,3 +128,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/sign-in/'
 LOGIN_REDIRECT_URL = '/'
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'picku459@gmail.com'
+EMAIL_HOST_PASSWORD = 'xvgfsbxufuexkpja'
+DEFAULT_FROM_EMAIL = 'PickUp <no-reply@pickup.localhost>'

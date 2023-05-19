@@ -26,7 +26,10 @@ def sign_up(request):
             user.username = email
             user.save()
             
-            login(request,user)
+            #Send a welcome emial
+              
+            
+            login(request,user,backend='django.contrib.auth.backends.ModelBackend')
             return redirect('/')
     return render(request,'sign-up.html',{
         'form':form
